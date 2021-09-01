@@ -1,0 +1,145 @@
+Program Version,EnergyPlus, Version 9.3.0-baff08990c, YMD=2021.07.06 11:53,
+   ** Warning ** Sizing:Parameters: note Timesteps in Averaging Window entered value=[1] is less than 1 hour (i.e., 6 timesteps).
+   ** Warning ** ManageSizing: For a zone sizing run, there must be at least 1 Sizing:Zone input object. SimulationControl Zone Sizing option ignored.
+   ************* Beginning Plant Sizing Calculations
+   ** Warning ** Site:GroundTemperature:BuildingSurface: Some values fall outside the range of 15-25C.
+   **   ~~~   ** These values may be inappropriate.  Please consult the Input Output Reference for more details.
+   ** Warning ** Weather file location will be used rather than entered (IDF) Location object.
+   **   ~~~   ** ..Location object=AUSTIN MUELLER MUNICIPAL AP U TX
+   **   ~~~   ** ..Weather File Location=Mueller Austin US US WMO#=Data Source
+   **   ~~~   ** ..due to location differences, Latitude difference=[0.12] degrees, Longitude difference=[0.33] degrees.
+   **   ~~~   ** ..Time Zone difference=[0.0] hour(s), Elevation difference=[46.01] percent, [98.00] meters.
+   ** Warning ** ProcessScheduleInput: Schedule:File="CLOTHESWASHER_1" 51763 records had errors - these values are set to 0.
+   **   ~~~   ** Use Output:Diagnostics,DisplayExtraWarnings; to see individual records in error.
+   ** Warning ** ProcessScheduleInput: Schedule:File="DISHWASHER_1" 51589 records had errors - these values are set to 0.
+   **   ~~~   ** Use Output:Diagnostics,DisplayExtraWarnings; to see individual records in error.
+   ** Warning ** ProcessScheduleInput: Schedule:File="SHOWERS_1" 51447 records had errors - these values are set to 0.
+   **   ~~~   ** Use Output:Diagnostics,DisplayExtraWarnings; to see individual records in error.
+   ** Warning ** ProcessScheduleInput: Schedule:File="SINKS_1" 44169 records had errors - these values are set to 0.
+   **   ~~~   ** Use Output:Diagnostics,DisplayExtraWarnings; to see individual records in error.
+   ** Warning ** No floor exists in Zone="DUMMY", zone floor area is zero. All values for this zone that are entered per floor area will be zero.
+   ************* Note that the following warning(s) may/will occur if you have not enclosed your zone completely.
+   ** Warning ** Entered Zone Volumes differ from calculated zone volume(s).
+   **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual zones.
+   ** Warning ** CalculateZoneVolume: 3 zones are not fully enclosed. For more details use:  Output:Diagnostics,DisplayExtrawarnings; 
+   ** Warning ** CheckUsedConstructions: There are 15 nominally unused constructions in input.
+   **   ~~~   ** For explicit details on each unused construction, use Output:Diagnostics,DisplayExtraWarnings;
+   ** Warning ** DetermineShadowingCombinations: There are 3 surfaces which are receiving surfaces and are non-convex.
+   **   ~~~   ** ...Shadowing values may be inaccurate. Check .shd report file for more surface shading details
+   **   ~~~   ** ...Add Output:Diagnostics,DisplayExtraWarnings; to see individual warnings for each surface.
+   ** Severe  ** DetermineShadowingCombinations: There are 3 surfaces which are casting surfaces and are non-convex.
+   **   ~~~   ** ...Shadowing values may be inaccurate. Check .shd report file for more surface shading details
+   **   ~~~   ** ...Add Output:Diagnostics,DisplayExtraWarnings; to see individual severes for each surface.
+   ** Warning ** DeterminePolygonOverlap: Too many figures [>200]  detected in an overlap calculation. Use Output:Diagnostics,DisplayExtraWarnings; for more details.
+   ** Warning ** The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = DX COOLING COIL_1 but not at the AHRI test condition due to curve out of bound.
+   **   ~~~   **  Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance.
+   ** Warning ** Check input. Pump nominal power or motor efficiency is set to 0, for pump=MAINS PRESSURE_1
+   ** Warning ** Meter:Custom="GAS:UNIT_1", invalid Output Variable or Meter Name="APPL_1:INTERIOREQUIPMENT:GAS".
+   **   ~~~   ** ...will not be shown with the Meter results.
+   ** Warning ** Output:Meter: invalid Key Name="APPL_1:EXTERIOREQUIPMENT:PROPANE" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="APPL_1:INTERIOREQUIPMENT:GAS" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="COMMONLIGHTS:ELECTRICITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="CUSTOMCRANKCASEHEATER_1:INTERIOREQUIPMENT:ELECTRICITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="ELECTRICITY:COMMON" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="FUELOIL:COMMON" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="FUELOIL:UNIT_1" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="GAS:COMMON" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="HEATING:FUELOIL_1" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="HEATINGSUPP:ELECTRICITY_1" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="HPWHFAN:ELECTRICITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="METERPIPELOSSESCENTRAL" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="PROPANE:COMMON" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="RECIRCPUMP:ELECTRICITY_1" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="SDHWPUMP:ELECTRICITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="VENTFANS_1:FANS:ELECTRICITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="WATERHEATING:ELECTRICITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="WATERHEATING:ELECTRICITY_1" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="WATERHEATING:FUELOIL" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="WATERHEATING:FUELOIL_1" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="WATERHEATING:GAS" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="WATERHEATING:PROPANE" - not found.
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ** Warning ** Found WaterUse:Storage that has nothing connected to draw water from it.
+   **   ~~~   ** Occurs for WaterUse:Storage = CONDENSATE TANK 1_1
+   **   ~~~   ** Check that input for water consuming components specifies a water supply tank.
+   ** Warning ** Processing Monthly Tabular Reports: Variable names not valid for this simulation
+   **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual variables.
+   ** Warning ** GetCurrentScheduleValue: Schedule="CLOTHESWASHER_1" is a Schedule:File
+   **   ~~~   ** ...Use of Schedule:File when DaylightSavingTime is in effect is not recommended.
+   **   ~~~   ** ...1) Remove RunperiodControl:DaylightSavingTime object or remove DST period from Weather File.
+   **   ~~~   ** ...2) Configure other schedules and Schedule:File to account for occupant behavior during DST.
+   **   ~~~   ** ...   If you have already done this, you can ignore this message.
+   **   ~~~   ** ...When active, DaylightSavingTime will shift all scheduled items by one hour, retaining the same day type as the original.
+   ** Warning ** CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed "DX COOLING COIL_1" - Full load outlet air dry-bulb temperature < 2C. This indicates the possibility of coil frost/freeze. Outlet temperature = 1.69 C.
+   **   ~~~   **  ...Occurrence info = AUSTIN MUELLER MUNICIPAL AP U TX 2340 SQFT, 11/19 16:10 - 16:15
+   **   ~~~   ** ... Possible reasons for low outlet air dry-bulb temperatures are: This DX coil
+   **   ~~~   **    1) may have a low inlet air dry-bulb temperature. Inlet air temperature = 20.024 C.
+   **   ~~~   **    2) may have a low air flow rate per watt of cooling capacity. Check inputs.
+   **   ~~~   **    3) is used as part of a HX assisted cooling coil which uses a high sensible effectiveness. Check inputs.
+   ************* Simulation Error Summary *************
+   ** Warning ** The following Report Variables were requested but not generated -- check.rdd file
+   **   ~~~   ** Either the IDF did not contain these elements, the variable name is misspelled,
+   **   ~~~   ** or the requested variable is an advanced output which requires Output : Diagnostics, DisplayAdvancedReportVariables;
+   ************* Key=Central Water Heater, VarName=WATER HEATER TANK TEMPERATURE, Frequency=Hourly
+   ************* Key=Central Water Heater, VarName=WATER HEATER TEMPERATURE NODE 1, Frequency=Hourly
+   ************* Key=DHW Demand Bypass Pipe Inlet Node, VarName=SYSTEM NODE MASS FLOW RATE, Frequency=Hourly
+   ************* Key=DHW Demand Inlet Pipe Inlet Node, VarName=SYSTEM NODE MASS FLOW RATE, Frequency=Hourly
+   ************* Key=DHW Recirc Return Pipe, VarName=PIPE AMBIENT HEAT TRANSFER ENERGY, Frequency=Hourly
+   ************* Key=DHW Recirc Return Pipe_1, VarName=PIPE AMBIENT HEAT TRANSFER ENERGY, Frequency=Hourly
+   ************* Key=DHW Recirc Supply Pipe, VarName=PIPE AMBIENT HEAT TRANSFER ENERGY, Frequency=Hourly
+   ************* Key=DHW Recirc Supply Pipe_1, VarName=PIPE AMBIENT HEAT TRANSFER ENERGY, Frequency=Hourly
+   ************* Key=ERV_1, VarName=ZONE VENTILATOR LATENT COOLING ENERGY, Frequency=Hourly
+   ************* Key=ERV_1, VarName=ZONE VENTILATOR LATENT HEATING ENERGY, Frequency=Hourly
+   ************* Key=ERV_1, VarName=ZONE VENTILATOR SENSIBLE COOLING ENERGY, Frequency=Hourly
+   ************* Key=ERV_1, VarName=ZONE VENTILATOR SENSIBLE HEATING ENERGY, Frequency=Hourly
+   ************* Key=Mini Split Heat Pump_1, VarName=VRF HEAT PUMP COOLING COP, Frequency=Hourly
+   ************* Key=Mini Split Heat Pump_1, VarName=VRF HEAT PUMP HEATING COP, Frequency=Hourly
+   ************* Key=None, VarName=ELECELEMUSAGEOUTPUTVARIABLE_1, Frequency=Hourly
+   ************* Key=Water Heater Use Inlet Node, VarName=SYSTEM NODE TEMPERATURE, Frequency=Hourly
+   ************* Key=Zone DX Dehumidifier_1, VarName=ZONE DEHUMIDIFIER SENSIBLE HEATING ENERGY, Frequency=Hourly
+   ************* There are 25 unused schedules in input.
+   ************* There are 179 unused week schedules in input.
+   ************* There are 335 unused day schedules in input.
+   ************* Use Output:Diagnostics,DisplayUnusedSchedules; to see them.
+   *************
+   ************* ===== Recurring Surface Error Summary =====
+   ************* The following surface error messages occurred.
+   *************
+   ************* Base Surface does not surround subsurface errors occuring...
+   ************* Check that the GlobalGeometryRules object is expressing the proper starting corner and direction [CounterClockwise/Clockwise]
+   *************
+   ** Warning ** Base surface does not surround subsurface (CHKSBS), Overlap Status=No-Overlap
+   **   ~~~   **   The base surround errors occurred 2 times.
+   **   ~~~   ** Surface "WALL12" misses SubSurface "WALL12-WINDOW1"
+   **   ~~~   ** Surface "WALL12" misses SubSurface "WALL12-WINDOW2"
+   *************
+   **   ~~~   **   The base surround errors occurred 2 times (total).
+   *************
+   *************
+   ************* ===== Recurring Error Summary =====
+   ************* The following recurring error messages occurred.
+   *************
+   *************  ** Warning ** CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed="DX COOLING COIL_1" - Full load outlet temperature indicates a possibility of frost/freeze error continues. Outlet air temperature statistics follow:
+   *************  **   ~~~   **   This error occurred 2 total times;
+   *************  **   ~~~   **   during Warmup 0 times;
+   *************  **   ~~~   **   during Sizing 0 times.
+   *************  **   ~~~   **   Max=1.780093  Min=1.691338
+   *************
+   *************
+   ************* ===== Final Error Summary =====
+   ************* The following error categories occurred.  Consider correcting or noting.
+   ************* Nominally Unused Constructions
+   ************* ..The nominally unused constructions warning is provided to alert you to potential conditions that can cause
+   ************* ..extra time during simulation. Each construction is calculated by the algorithm indicated in the HeatBalanceAlgorithm
+   ************* ..object. You may remove the constructions indicated (when you use the DisplayExtraWarnings option).
+   *************
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 1 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 2 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 49 Warning; 3 Severe Errors; Elapsed Time=00hr 01min 13.05sec

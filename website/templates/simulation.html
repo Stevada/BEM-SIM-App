@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block title %}Simulation{% endblock %} {% block
+content %}
+<p style="font-family:verdana">Building energy model(BEM) calibration is to calibrate model parameters to ensure the simulation output well match the real energy consumption. In our research, we use EnergyPlus(E+)v9.3.0
+    , a BEM software developed by the U.S. Department of Energy’s National Renewable Energy Laboratory<p>
+<p style="font-family:verdana">We use mean square error(MSE) to estimate the performance of one set of parameters. Here are some of the calibration parameters we used in the research. You can play around with them and
+    run a E+ simulation. <strong>One simulation will take around 1.5 minutes.</strong> Repeatedly clicking the Run button may lead to simulation failure because the CPU of the server can not handle too
+    many simulation processes simultaneously. After your simulation is finished, its MSE will be shown below.</p>
+<h2 align="center">Simulation MSE</h2>
+<ul class="list-group list-group-flush" id="records">
+  {% for record in user.records %}
+  <li class="list-group-item">
+    {{ record.data }}
+    <button type="button" class="close" onClick="deleteRecord({{ record.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<br />
+<form method="POST">
+  <h3 align="center">Run a E+ Simulation</h3>
+  <p><b>Note:</b> Each parameter has to be within its range. If you left it as blank, the simulation will use the default parameter.</p>
+  <div class="form-group">
+    <label for="solar_transmittance">Solar Transmittance</label>
+    <input
+      type="text"
+      class="form-control"
+      id="solar_transmittance"
+      name="solar_transmittance"
+      placeholder="range: (0.001, 0.999)"
+    />
+  </div>
+  <div class="form-group">
+    <label for="lighting_level">Lighting Level</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lighting_level"
+      name="lighting_level"
+      placeholder="range: (300, 700)"
+    />
+  </div>
+  <div class="form-group">
+    <label for="burner_efficiency">Burner Efficiency</label>
+    <input
+      type="text"
+      class="form-control"
+      id="burner_efficiency"
+      name="burner_efficiency"
+      placeholder="range: (0.5, 0.999)"
+    />
+  </div>
+  <div class="form-group">
+    <label for="maximum_supply_air_temperature">Maximum Supply Air Temperature</label>
+    <input
+      type="text"
+      class="form-control"
+      id="maximum_supply_air_temperature"
+      name="maximum_supply_air_temperature"
+      placeholder="range: (30, 70)"
+    />
+  </div>
+    <div class="form-group">
+    <label for="fan_total_efficiency">Fan Total Efficiency</label>
+    <input
+      type="text"
+      class="form-control"
+      id="fan_total_efficiency"
+      name="fan_total_efficiency"
+      placeholder="range: (0.001, 0.999)"
+    />
+  </div>
+  <br />
+<div align="center">
+    <button type="submit" class="btn btn-primary">Run</button>
+</div>
+{% endblock %}

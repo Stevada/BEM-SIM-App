@@ -1,0 +1,249 @@
+Program Version,EnergyPlus, Version 9.3.0-baff08990c, YMD=2021.07.06 11:53
+! This file shows details about the branches, nodes, and other
+! elements of the flow connections.
+! This file is intended for use in "debugging" potential problems
+! that may also be detected by the program, but may be more easily
+! identified by "eye".
+! This file is also intended to support software which draws a
+! schematic diagram of the HVAC system.
+! ===============================================================
+! #Nodes,<Number of Unique Nodes>
+ #Nodes,23
+! <Node>,<NodeNumber>,<Node Name>,<Node Fluid Type>,<# Times Node Referenced After Definition>
+ Node,1,LIVING SUPPLY NODE_1,Air,3
+ Node,2,DHW DEMAND INLET NODE_1,Water,2
+ Node,3,DHW DEMAND INLET PIPE OUTLET NODE_1,Water,1
+ Node,4,DHW SUPPLY OUTLET PIPE INLET NODE_1,Water,1
+ Node,5,DHW SUPPLY OUTLET NODE_1,Water,4
+ Node,6,MAINS INLET NODE_1,Water,2
+ Node,7,MAINS PRESSURE OUTLET NODE_1,Water,1
+ Node,8,MAINS MAKEUP PIPE INLET NODE_1,Water,1
+ Node,9,MAINS MAKEUP NODE_1,Water,2
+ Node,10,AIR SUPPLY INLET NODE_1,Air,3
+ Node,11,AIR SUPPLY OUTLET NODE_1,Air,3
+ Node,12,WATER DEMAND INLET NODE_1,Water,1
+ Node,13,WATER DEMAND OUTLET NODE_1,Water,1
+ Node,14,WATER HEATER USE INLET NODE_1,Water,1
+ Node,15,WATER HEATER USE OUTLET NODE_1,Water,1
+ Node,16,LIVING ZONE AIR NODE_1,Air,0
+ Node,17,LIVING RETURN NODE_1,Air,1
+ Node,18,AIR DEMAND INLET NODE_1,Air,2
+ Node,19,AIR DEMAND OUTLET NODE_1,Air,2
+ Node,20,LIVING SUPPLY NODE_1 ATINLET,Air,1
+ Node,21,RA PLENUM AIR NODE_1,Air,0
+ Node,22,HEATING COIL INLET NODE_1,Air,1
+ Node,23,COOLING COIL INLET NODE_1,Air,1
+! ===============================================================
+! Suspicious nodes have 0 references.  It is normal for some nodes, however.
+! Listing nodes with 0 references (culled from previous list):
+! <Suspicious Node>,<NodeNumber>,<Node Name>,<Node Fluid Type>,<# Times Node Referenced After Definition>
+ Suspicious Node,16,LIVING ZONE AIR NODE_1,Air,0
+ Suspicious Node,21,RA PLENUM AIR NODE_1,Air,0
+! ===============================================================
+! <#Branch Lists>,<Number of Branch Lists>
+ #Branch Lists,3
+! <Branch List>,<Branch List Count>,<Branch List Name>,<Loop Name>,<Loop Type>,<Number of Branches>
+! <Branch>,<Branch Count>,<Branch Name>,<Loop Name>,<Loop Type>,<Branch Inlet Node Name>,<Branch Outlet Node Name>
+ Branch List,1,AIR SUPPLY BRANCHES_1,CENTRAL AIR SYSTEM_1,Air,1
+   Branch,1,SUPPLY AIR BRANCH_1,CENTRAL AIR SYSTEM_1,Air,AIR SUPPLY INLET NODE_1,AIR SUPPLY OUTLET NODE_1
+ Branch List,2,DHW DEMAND BRANCHES_1,DHW LOOP_1,Plant Demand,3
+   Branch,1,DHW DEMAND INLET BRANCH_1,DHW LOOP_1,Plant Demand,DHW DEMAND INLET NODE_1,DHW DEMAND INLET PIPE OUTLET NODE_1
+   Branch,2,WATER DEMAND BRANCH_1,DHW LOOP_1,Plant Demand,WATER DEMAND INLET NODE_1,WATER DEMAND OUTLET NODE_1
+   Branch,3,MAINS MAKEUP BRANCH_1,DHW LOOP_1,Plant Demand,MAINS MAKEUP PIPE INLET NODE_1,MAINS MAKEUP NODE_1
+ Branch List,3,DHW SUPPLY BRANCHES_1,DHW LOOP_1,Plant Supply,3
+   Branch,1,MAINS INLET BRANCH_1,DHW LOOP_1,Plant Supply,MAINS INLET NODE_1,MAINS PRESSURE OUTLET NODE_1
+   Branch,2,WATER HEATER BRANCH_1,DHW LOOP_1,Plant Supply,WATER HEATER USE INLET NODE_1,WATER HEATER USE OUTLET NODE_1
+   Branch,3,DHW SUPPLY OUTLET BRANCH_1,DHW LOOP_1,Plant Supply,DHW SUPPLY OUTLET PIPE INLET NODE_1,DHW SUPPLY OUTLET NODE_1
+! ===============================================================
+! <#Supply Air Paths>,<Number of Supply Air Paths>
+ #Supply Air Paths,1
+! <Supply Air Path>,<Supply Air Path Count>,<Supply Air Path Name>,<AirLoopHVAC Name>
+! <#Components on Supply Air Path>,<Number of Components>
+! <Supply Air Path Component>,<Component Count>,<Component Type>,<Component Name>,<AirLoopHVAC Name>
+! <#Outlet Nodes on Supply Air Path Component>,<Number of Nodes>
+! <Supply Air Path Component Nodes>,<Node Count>,<Component Type>,<Component Name>,<Inlet Node Name>,<Outlet Node Name>,<AirLoopHVAC Name>
+ Supply Air Path,1,SUPPLY AIR PATH_1,CENTRAL AIR SYSTEM_1
+   #Components on Supply Air Path,1
+   Supply Air Path Component,1,AIRLOOPHVAC:ZONESPLITTER,ZONE SPLITTER_1,CENTRAL AIR SYSTEM_1
+     #Outlet Nodes on Supply Air Path Component,1
+     Supply Air Path Component Nodes,1,AIRLOOPHVAC:ZONESPLITTER,ZONE SPLITTER_1,AIR DEMAND INLET NODE_1,LIVING SUPPLY NODE_1 ATINLET,CENTRAL AIR SYSTEM_1
+! <#Nodes on Supply Air Path>,<Number of Nodes>
+! <Supply Air Path Node>,<Node Type>,<Node Count>,<Node Name>,<AirLoopHVAC Name>
+#Nodes on Supply Air Path,2
+   Supply Air Path Node,Inlet Node,1,AIR DEMAND INLET NODE_1,CENTRAL AIR SYSTEM_1
+   Supply Air Path Node,Outlet Node,2,LIVING SUPPLY NODE_1 ATINLET,CENTRAL AIR SYSTEM_1
+! ===============================================================
+! <#Return Air Paths>,<Number of Return Air Paths>
+ #Return Air Paths,1
+! <Return Air Path>,<Return Air Path Count>,<Return Air Path Name>,<AirLoopHVAC Name>
+! <#Components on Return Air Path>,<Number of Components>
+! <Return Air Path Component>,<Component Count>,<Component Type>,<Component Name>,<AirLoopHVAC Name>
+! <#Inlet Nodes on Return Air Path Component>,<Number of Nodes>
+! <Return Air Path Component Nodes>,<Node Count>,<Component Type>,<Component Name>,<Inlet Node Name>,<Outlet Node Name>,<AirLoopHVAC Name>
+ Return Air Path,1,RETURN AIR PATH_1,CENTRAL AIR SYSTEM_1
+   #Components on Return Air Path,1
+   Return Air Path Component,1,AIRLOOPHVAC:RETURNPLENUM,RETURN PLENUM_1,CENTRAL AIR SYSTEM_1
+     #Inlet Nodes on Return Air Path Component,1
+     Return Air Path Component Nodes,1,AIRLOOPHVAC:RETURNPLENUM,RETURN PLENUM_1,LIVING RETURN NODE_1,AIR DEMAND OUTLET NODE_1,CENTRAL AIR SYSTEM_1
+! <#Nodes on Return Air Path>,<Number of Nodes>
+! <Return Air Path Node>,<Node Type>,<Node Count>,<Node Name>,<AirLoopHVAC Name>
+   #Nodes on Return Air Path,2
+   Return Air Path Node,Outlet Node,1,AIR DEMAND OUTLET NODE_1,CENTRAL AIR SYSTEM_1
+   Return Air Path Node,Inlet Node,2,LIVING RETURN NODE_1,CENTRAL AIR SYSTEM_1
+! ===============================================================
+! #Outdoor Air Nodes,<Number of Outdoor Air Nodes>
+ #Outdoor Air Nodes,0
+! ===============================================================
+! <#Component Sets>,<Number of Component Sets>
+ #Component Sets,11
+! <Component Set>,<Component Set Count>,<Parent Object Type>,<Parent Object Name>,<Component Type>,<Component Name>,<Inlet Node ID>,<Outlet Node ID>,<Description>
+ Component Set,1,BRANCH,DHW DEMAND INLET BRANCH_1,PIPE:ADIABATIC,DHW DEMAND INLET PIPE_1,DHW DEMAND INLET NODE_1,DHW DEMAND INLET PIPE OUTLET NODE_1,Pipe Nodes
+ Component Set,2,BRANCH,DHW SUPPLY OUTLET BRANCH_1,PIPE:ADIABATIC,DHW SUPPLY OUTLET PIPE_1,DHW SUPPLY OUTLET PIPE INLET NODE_1,DHW SUPPLY OUTLET NODE_1,Pipe Nodes
+ Component Set,3,BRANCH,MAINS INLET BRANCH_1,PUMP:VARIABLESPEED,MAINS PRESSURE_1,MAINS INLET NODE_1,MAINS PRESSURE OUTLET NODE_1,Water Nodes
+ Component Set,4,BRANCH,MAINS MAKEUP BRANCH_1,PIPE:ADIABATIC,MAINS MAKEUP PIPE_1,MAINS MAKEUP PIPE INLET NODE_1,MAINS MAKEUP NODE_1,Pipe Nodes
+ Component Set,5,BRANCH,SUPPLY AIR BRANCH_1,AIRLOOPHVAC:UNITARYHEATCOOL,FORCED AIR SYSTEM_1,AIR SUPPLY INLET NODE_1,AIR SUPPLY OUTLET NODE_1,Air Nodes
+ Component Set,6,BRANCH,WATER DEMAND BRANCH_1,WATERUSE:CONNECTIONS,DOMESTIC HOT WATER_1,WATER DEMAND INLET NODE_1,WATER DEMAND OUTLET NODE_1,DHW Nodes
+ Component Set,7,BRANCH,WATER HEATER BRANCH_1,WATERHEATER:MIXED,WATER HEATER_1,WATER HEATER USE INLET NODE_1,WATER HEATER USE OUTLET NODE_1,Use Side Water Nodes
+ Component Set,8,ZONEHVAC:AIRDISTRIBUTIONUNIT,LIVING ZONE DIRECT AIR_1 ADU,AIRTERMINAL:SINGLEDUCT:CONSTANTVOLUME:NOREHEAT,LIVING ZONE DIRECT AIR_1,LIVING SUPPLY NODE_1 ATINLET,LIVING SUPPLY NODE_1,Air Nodes
+ Component Set,9,AIRLOOPHVAC:UNITARYHEATCOOL,FORCED AIR SYSTEM_1,FAN:ONOFF,SUPPLY FAN_1,AIR SUPPLY INLET NODE_1,HEATING COIL INLET NODE_1,Air Nodes
+ Component Set,10,AIRLOOPHVAC:UNITARYHEATCOOL,FORCED AIR SYSTEM_1,COIL:HEATING:FUEL,FURNACE HEATING COIL_1,HEATING COIL INLET NODE_1,COOLING COIL INLET NODE_1,Air Nodes
+ Component Set,11,AIRLOOPHVAC:UNITARYHEATCOOL,FORCED AIR SYSTEM_1,COIL:COOLING:DX:SINGLESPEED,DX COOLING COIL_1,COOLING COIL INLET NODE_1,AIR SUPPLY OUTLET NODE_1,Air Nodes
+! ===============================================================
+! <# Plant Loops>,<Number of Plant Loops>
+ #Plant Loops,1
+! <Plant Loop>,<Plant Loop Name>,<Loop Type>,<Inlet Node Name>,<Outlet Node Name>,<Branch List>,<Connector List>
+! <Plant Loop Connector>,<Connector Type>,<Connector Name>,<Loop Name>,<Loop Type>,<Number of Inlets/Outlets>
+! <Plant Loop Connector Branches>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Branch>,<Outlet Branch>,<Loop Name>,<Loop Type>
+! <Plant Loop Connector Nodes>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Node>,<Outlet Node>,<Loop Name>,<Loop Type>
+! <Plant Loop Supply Connection>,<Plant Loop Name>,<Supply Side Outlet Node Name>,<Demand Side Inlet Node Name>
+! <Plant Loop Return Connection>,<Plant Loop Name>,<Demand Side Outlet Node Name>,<Supply Side Inlet Node Name>
+ Plant Loop,DHW LOOP_1,Demand,DHW DEMAND INLET NODE_1,MAINS MAKEUP NODE_1,DHW DEMAND BRANCHES_1,DHW DEMAND CONNECTORS_1
+   Plant Loop Connector,Splitter,DHW DEMAND SPLITTER_1,DHW LOOP_1,Demand,1
+     Plant Loop Connector Branches,1,Splitter,DHW DEMAND SPLITTER_1,DHW DEMAND INLET BRANCH_1,WATER DEMAND BRANCH_1,DHW LOOP_1,Demand
+     Plant Loop Connector Nodes,   1,Splitter,DHW DEMAND SPLITTER_1,DHW DEMAND INLET PIPE OUTLET NODE_1,WATER DEMAND INLET NODE_1,DHW LOOP_1,Demand
+   Plant Loop Connector,Mixer,DHW DEMAND MIXER_1,DHW LOOP_1,Demand,1
+     Plant Loop Connector Branches,1,Mixer,DHW DEMAND MIXER_1,WATER DEMAND BRANCH_1,MAINS MAKEUP BRANCH_1,DHW LOOP_1,Demand
+     Plant Loop Connector Nodes,   1,Mixer,DHW DEMAND MIXER_1,WATER DEMAND OUTLET NODE_1,MAINS MAKEUP PIPE INLET NODE_1,DHW LOOP_1,Demand
+ Plant Loop,DHW LOOP_1,Supply,MAINS INLET NODE_1,DHW SUPPLY OUTLET NODE_1,DHW SUPPLY BRANCHES_1,DHW SUPPLY CONNECTORS_1
+   Plant Loop Connector,Splitter,DHW SUPPLY SPLITTER_1,DHW LOOP_1,Supply,1
+     Plant Loop Connector Branches,1,Splitter,DHW SUPPLY SPLITTER_1,MAINS INLET BRANCH_1,WATER HEATER BRANCH_1,DHW LOOP_1,Supply
+     Plant Loop Connector Nodes,   1,Splitter,DHW SUPPLY SPLITTER_1,MAINS PRESSURE OUTLET NODE_1,WATER HEATER USE INLET NODE_1,DHW LOOP_1,Supply
+   Plant Loop Connector,Mixer,DHW SUPPLY MIXER_1,DHW LOOP_1,Supply,1
+     Plant Loop Connector Branches,1,Mixer,DHW SUPPLY MIXER_1,WATER HEATER BRANCH_1,DHW SUPPLY OUTLET BRANCH_1,DHW LOOP_1,Supply
+     Plant Loop Connector Nodes,   1,Mixer,DHW SUPPLY MIXER_1,WATER HEATER USE OUTLET NODE_1,DHW SUPPLY OUTLET PIPE INLET NODE_1,DHW LOOP_1,Supply
+ Plant Loop Supply Connection,DHW LOOP_1,DHW SUPPLY OUTLET NODE_1,DHW DEMAND INLET NODE_1
+ Plant Loop Return Connection,DHW LOOP_1,MAINS MAKEUP NODE_1,MAINS INLET NODE_1
+! ===============================================================
+! <# Condenser Loops>,<Number of Condenser Loops>
+ #Condenser Loops,0
+! <Condenser Loop>,<Condenser Loop Name>,<Loop Type>,<Inlet Node Name>,<Outlet Node Name>,<Branch List>,<Connector List>
+! <Condenser Loop Connector>,<Connector Type>,<Connector Name>,<Loop Name>,<Loop Type>,<Number of Inlets/Outlets>
+! <Condenser Loop Connector Branches>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Branch>,<Outlet Branch>,<Loop Name>,<Loop Type>
+! <Condenser Loop Connector Nodes>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Node>,<Outlet Node>,<Loop Name>,<Loop Type>
+! <Condenser Loop Supply Connection>,<Condenser Loop Name>,<Supply Side Outlet Node Name>,<Demand Side Inlet Node Name>
+! <Condenser Loop Return Connection>,<Condenser Loop Name>,<Demand Side Outlet Node Name>,<Supply Side Inlet Node Name>
+! ===============================================================
+! <# Controlled Zones>,<Number of Controlled Zones>
+ #Controlled Zones,1
+! <Controlled Zone>,<Controlled Zone Name>,<Equip List Name>,<Control List Name>,<Zone Node Name>,<# Inlet Nodes>,<# Exhaust Nodes>,<# Return Nodes>
+! <Controlled Zone Inlet>,<Inlet Node Count>,<Controlled Zone Name>,<Supply Air Inlet Node Name>,<SD Sys:Cooling/Heating [DD:Cooling] Inlet Node Name>,<DD Sys:Heating Inlet Node Name>
+! <Controlled Zone Exhaust>,<Exhaust Node Count>,<Controlled Zone Name>,<Exhaust Air Node Name>
+ Controlled Zone,LIVING_1,LIVING ZONE EQUIPMENT_1,,LIVING ZONE AIR NODE_1,1,0,1
+   Controlled Zone Inlet,1,LIVING_1,LIVING SUPPLY NODE_1,LIVING SUPPLY NODE_1 ATINLET,N/A
+   Controlled Zone Return,1,LIVING_1,LIVING RETURN NODE_1
+! ===============================================================
+! <#Zone Equipment Lists>,<Number of Zone Equipment Lists>
+ #Zone Equipment Lists,1
+! <Zone Equipment List>,<Zone Equipment List Count>,<Zone Equipment List Name>,<Zone Name>,<Number of Components>
+! <Zone Equipment Component>,<Component Count>,<Component Type>,<Component Name>,<Zone Name>,<Heating Priority>,<Cooling Priority>
+ Zone Equipment List,2,LIVING ZONE EQUIPMENT_1,LIVING_1,1
+   Zone Equipment Component,1,ZONEHVAC:AIRDISTRIBUTIONUNIT,LIVING ZONE DIRECT AIR_1 ADU,LIVING_1,1,1
+! ===============================================================
+! <#AirLoopHVACs>,<Number of AirLoopHVACs>
+ #AirLoopHVACs,1
+! <AirLoopHVAC>,<Air Loop Name>,<# Return Nodes>,<# Supply Nodes>,<# Zones Cooled>,<# Zones Heated>,<Outdoor Air Used>
+! <AirLoop Return Connections>,<Connection Count>,<AirLoopHVAC Name>,<Zn Eqp Return Node #>,<Zn Eqp Return Node Name>,<AirLoop Return Node #>,<Air Loop Return Node Name>
+! <AirLoop Supply Connections>,<Connection Count>,<AirLoopHVAC Name>,<Zn Eqp Supply Node #>,<Zn Eqp Supply Node Name>,<AirLoop Supply Node #>,<Air Loop Supply Node Name>
+! <Cooled Zone Info>,<Cooled Zone Count>,<Cooled Zone Name>,<Cooled Zone Inlet Node #>,<Cooled Zone Inlet Node Name>,<AirLoopHVAC Name>
+! <Heated Zone Info>,<Heated Zone Count>,<Heated Zone Name>,<Heated Zone Inlet Node #>,<Heated Zone Inlet Node Name>,<AirLoopHVAC Name>
+! <Outdoor Air Connections>,<OA Inlet Node #>,<OA Return Air Inlet Node Name>,<OA Outlet Node #>,<OA Mixed Air Outlet Node Name>,<AirLoopHVAC Name>
+! <AirLoopHVAC Connector>,<Connector Type>,<Connector Name>,<Loop Name>,<Loop Type>,<Number of Inlets/Outlets>
+! <AirLoopHVAC Connector Branches>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Branch>,<Outlet Branch>,<Loop Name>,<Loop Type>
+! <AirLoopHVAC Connector Nodes>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Node>,<Outlet Node>,<Loop Name>,<Loop Type>
+ AirLoopHVAC,CENTRAL AIR SYSTEM_1,1,1,1,0,No
+   AirLoop Return Connections,1,CENTRAL AIR SYSTEM_1,19,AIR DEMAND OUTLET NODE_1,10,AIR SUPPLY INLET NODE_1
+   AirLoop Supply Connections,1,CENTRAL AIR SYSTEM_1,18,AIR DEMAND INLET NODE_1,11,AIR SUPPLY OUTLET NODE_1
+   Cooled Zone Info,1,LIVING_1,1,LIVING SUPPLY NODE_1,CENTRAL AIR SYSTEM_1
+! ===============================================================
+! <#Parent Node Connections>,<Number of Parent Node Connections>
+ #Parent Node Connections,28
+! <Parent Node Connection>,<Node Name>,<Node ObjectType>,<Node ObjectName>,<Node ConnectionType>,<Node FluidStream>
+ Parent Node Connection,DHW DEMAND INLET NODE_1,BRANCH,DHW DEMAND INLET BRANCH_1,Inlet,1
+ Parent Node Connection,DHW DEMAND INLET PIPE OUTLET NODE_1,BRANCH,DHW DEMAND INLET BRANCH_1,Outlet,1
+ Parent Node Connection,DHW SUPPLY OUTLET PIPE INLET NODE_1,BRANCH,DHW SUPPLY OUTLET BRANCH_1,Inlet,1
+ Parent Node Connection,DHW SUPPLY OUTLET NODE_1,BRANCH,DHW SUPPLY OUTLET BRANCH_1,Outlet,1
+ Parent Node Connection,MAINS INLET NODE_1,BRANCH,MAINS INLET BRANCH_1,Inlet,1
+ Parent Node Connection,MAINS PRESSURE OUTLET NODE_1,BRANCH,MAINS INLET BRANCH_1,Outlet,1
+ Parent Node Connection,MAINS MAKEUP PIPE INLET NODE_1,BRANCH,MAINS MAKEUP BRANCH_1,Inlet,1
+ Parent Node Connection,MAINS MAKEUP NODE_1,BRANCH,MAINS MAKEUP BRANCH_1,Outlet,1
+ Parent Node Connection,AIR SUPPLY INLET NODE_1,BRANCH,SUPPLY AIR BRANCH_1,Inlet,1
+ Parent Node Connection,AIR SUPPLY OUTLET NODE_1,BRANCH,SUPPLY AIR BRANCH_1,Outlet,1
+ Parent Node Connection,WATER DEMAND INLET NODE_1,BRANCH,WATER DEMAND BRANCH_1,Inlet,1
+ Parent Node Connection,WATER DEMAND OUTLET NODE_1,BRANCH,WATER DEMAND BRANCH_1,Outlet,1
+ Parent Node Connection,WATER HEATER USE INLET NODE_1,BRANCH,WATER HEATER BRANCH_1,Inlet,1
+ Parent Node Connection,WATER HEATER USE OUTLET NODE_1,BRANCH,WATER HEATER BRANCH_1,Outlet,1
+ Parent Node Connection,AIR DEMAND INLET NODE_1,AIRLOOPHVAC:SUPPLYPATH,SUPPLY AIR PATH_1,Inlet,1
+ Parent Node Connection,AIR DEMAND OUTLET NODE_1,AIRLOOPHVAC:RETURNPATH,RETURN AIR PATH_1,Outlet,1
+ Parent Node Connection,MAINS INLET NODE_1,PLANTLOOP,DHW LOOP_1,Inlet,1
+ Parent Node Connection,DHW SUPPLY OUTLET NODE_1,PLANTLOOP,DHW LOOP_1,Outlet,1
+ Parent Node Connection,DHW DEMAND INLET NODE_1,PLANTLOOP,DHW LOOP_1,Inlet,1
+ Parent Node Connection,MAINS MAKEUP NODE_1,PLANTLOOP,DHW LOOP_1,Outlet,1
+ Parent Node Connection,DHW SUPPLY OUTLET NODE_1,PLANTLOOP,DHW LOOP_1,Sensor,1
+ Parent Node Connection,LIVING SUPPLY NODE_1,ZONEHVAC:AIRDISTRIBUTIONUNIT,LIVING ZONE DIRECT AIR_1 ADU,Outlet,1
+ Parent Node Connection,AIR SUPPLY INLET NODE_1,AIRLOOPHVAC,CENTRAL AIR SYSTEM_1,Inlet,1
+ Parent Node Connection,AIR DEMAND OUTLET NODE_1,AIRLOOPHVAC,CENTRAL AIR SYSTEM_1,Outlet,1
+ Parent Node Connection,AIR DEMAND INLET NODE_1,AIRLOOPHVAC,CENTRAL AIR SYSTEM_1,Inlet,1
+ Parent Node Connection,AIR SUPPLY OUTLET NODE_1,AIRLOOPHVAC,CENTRAL AIR SYSTEM_1,Outlet,1
+ Parent Node Connection,AIR SUPPLY INLET NODE_1,AIRLOOPHVAC:UNITARYHEATCOOL,FORCED AIR SYSTEM_1,Inlet,1
+ Parent Node Connection,AIR SUPPLY OUTLET NODE_1,AIRLOOPHVAC:UNITARYHEATCOOL,FORCED AIR SYSTEM_1,Outlet,1
+! ===============================================================
+! <#Non-Parent Node Connections>,<Number of Non-Parent Node Connections>
+ #Non-Parent Node Connections,37
+! <Non-Parent Node Connection>,<Node Name>,<Node ObjectType>,<Node ObjectName>,<Node ConnectionType>,<Node FluidStream>
+ Non-Parent Node Connection,LIVING ZONE AIR NODE_1,ZONEHVAC:EQUIPMENTCONNECTIONS,LIVING_1,ZoneNode,1
+ Non-Parent Node Connection,LIVING SUPPLY NODE_1,ZONEHVAC:EQUIPMENTCONNECTIONS,LIVING_1,ZoneInlet,1
+ Non-Parent Node Connection,LIVING RETURN NODE_1,ZONEHVAC:EQUIPMENTCONNECTIONS,LIVING_1,ZoneReturn,1
+ Non-Parent Node Connection,DHW SUPPLY OUTLET NODE_1,SETPOINTMANAGER:SCHEDULED,DHW LOOP SETPOINT MANAGER_1,Setpoint,1
+ Non-Parent Node Connection,DHW DEMAND INLET NODE_1,PIPE:ADIABATIC,DHW DEMAND INLET PIPE_1,Inlet,1
+ Non-Parent Node Connection,DHW DEMAND INLET PIPE OUTLET NODE_1,PIPE:ADIABATIC,DHW DEMAND INLET PIPE_1,Outlet,1
+ Non-Parent Node Connection,DHW SUPPLY OUTLET PIPE INLET NODE_1,PIPE:ADIABATIC,DHW SUPPLY OUTLET PIPE_1,Inlet,1
+ Non-Parent Node Connection,DHW SUPPLY OUTLET NODE_1,PIPE:ADIABATIC,DHW SUPPLY OUTLET PIPE_1,Outlet,1
+ Non-Parent Node Connection,MAINS MAKEUP PIPE INLET NODE_1,PIPE:ADIABATIC,MAINS MAKEUP PIPE_1,Inlet,1
+ Non-Parent Node Connection,MAINS MAKEUP NODE_1,PIPE:ADIABATIC,MAINS MAKEUP PIPE_1,Outlet,1
+ Non-Parent Node Connection,WATER DEMAND INLET NODE_1,WATERUSE:CONNECTIONS,DOMESTIC HOT WATER_1,Inlet,1
+ Non-Parent Node Connection,WATER DEMAND OUTLET NODE_1,WATERUSE:CONNECTIONS,DOMESTIC HOT WATER_1,Outlet,1
+ Non-Parent Node Connection,DHW DEMAND INLET PIPE OUTLET NODE_1,CONNECTOR:SPLITTER,DHW DEMAND SPLITTER_1,Inlet,1
+ Non-Parent Node Connection,WATER DEMAND INLET NODE_1,CONNECTOR:SPLITTER,DHW DEMAND SPLITTER_1,Outlet,1
+ Non-Parent Node Connection,MAINS MAKEUP PIPE INLET NODE_1,CONNECTOR:MIXER,DHW DEMAND MIXER_1,Outlet,1
+ Non-Parent Node Connection,WATER DEMAND OUTLET NODE_1,CONNECTOR:MIXER,DHW DEMAND MIXER_1,Inlet,1
+ Non-Parent Node Connection,WATER HEATER USE INLET NODE_1,WATERHEATER:MIXED,WATER HEATER_1,Inlet,1
+ Non-Parent Node Connection,WATER HEATER USE OUTLET NODE_1,WATERHEATER:MIXED,WATER HEATER_1,Outlet,1
+ Non-Parent Node Connection,MAINS PRESSURE OUTLET NODE_1,CONNECTOR:SPLITTER,DHW SUPPLY SPLITTER_1,Inlet,1
+ Non-Parent Node Connection,WATER HEATER USE INLET NODE_1,CONNECTOR:SPLITTER,DHW SUPPLY SPLITTER_1,Outlet,1
+ Non-Parent Node Connection,DHW SUPPLY OUTLET PIPE INLET NODE_1,CONNECTOR:MIXER,DHW SUPPLY MIXER_1,Outlet,1
+ Non-Parent Node Connection,WATER HEATER USE OUTLET NODE_1,CONNECTOR:MIXER,DHW SUPPLY MIXER_1,Inlet,1
+ Non-Parent Node Connection,AIR DEMAND INLET NODE_1,AIRLOOPHVAC:ZONESPLITTER,ZONE SPLITTER_1,Inlet,1
+ Non-Parent Node Connection,LIVING SUPPLY NODE_1 ATINLET,AIRLOOPHVAC:ZONESPLITTER,ZONE SPLITTER_1,Outlet,1
+ Non-Parent Node Connection,LIVING SUPPLY NODE_1 ATINLET,AIRTERMINAL:SINGLEDUCT:CONSTANTVOLUME:NOREHEAT,LIVING ZONE DIRECT AIR_1,Inlet,1
+ Non-Parent Node Connection,LIVING SUPPLY NODE_1,AIRTERMINAL:SINGLEDUCT:CONSTANTVOLUME:NOREHEAT,LIVING ZONE DIRECT AIR_1,Outlet,1
+ Non-Parent Node Connection,RA PLENUM AIR NODE_1,AIRLOOPHVAC:RETURNPLENUM,RETURN PLENUM_1,ZoneNode,1
+ Non-Parent Node Connection,AIR DEMAND OUTLET NODE_1,AIRLOOPHVAC:RETURNPLENUM,RETURN PLENUM_1,Outlet,1
+ Non-Parent Node Connection,LIVING RETURN NODE_1,AIRLOOPHVAC:RETURNPLENUM,RETURN PLENUM_1,Inlet,1
+ Non-Parent Node Connection,AIR SUPPLY INLET NODE_1,FAN:ONOFF,SUPPLY FAN_1,Inlet,1
+ Non-Parent Node Connection,HEATING COIL INLET NODE_1,FAN:ONOFF,SUPPLY FAN_1,Outlet,1
+ Non-Parent Node Connection,HEATING COIL INLET NODE_1,COIL:HEATING:FUEL,FURNACE HEATING COIL_1,Inlet,1
+ Non-Parent Node Connection,COOLING COIL INLET NODE_1,COIL:HEATING:FUEL,FURNACE HEATING COIL_1,Outlet,1
+ Non-Parent Node Connection,COOLING COIL INLET NODE_1,COIL:COOLING:DX:SINGLESPEED,DX COOLING COIL_1,Inlet,1
+ Non-Parent Node Connection,AIR SUPPLY OUTLET NODE_1,COIL:COOLING:DX:SINGLESPEED,DX COOLING COIL_1,Outlet,1
+ Non-Parent Node Connection,MAINS INLET NODE_1,PUMP:VARIABLESPEED,MAINS PRESSURE_1,Inlet,1
+ Non-Parent Node Connection,MAINS PRESSURE OUTLET NODE_1,PUMP:VARIABLESPEED,MAINS PRESSURE_1,Outlet,1

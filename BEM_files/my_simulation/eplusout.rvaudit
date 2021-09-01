@@ -1,0 +1,16 @@
+ ReadVarsESO
+ processing:/home/stevada/Documents/BEM_Visualization/mysimulation_test/opyplus.rvi
+ input file:eplusout.eso
+ output file:eplusout.csv
+ getting all vars from:eplusout.eso
+  number variables requested for output=         143
+ ReadVars Run Time=00hr 00min  0.32sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:/home/stevada/Documents/BEM_Visualization/mysimulation_test/opyplus.mvi
+ input file:eplusout.mtr
+ output file:eplusmtr.csv
+ getting all vars from:eplusout.mtr
+  number variables requested for output=           4
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.

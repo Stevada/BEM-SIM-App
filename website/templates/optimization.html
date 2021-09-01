@@ -1,0 +1,114 @@
+{% extends "base.html" %} {% block title %}Optimization{% endblock %} {% block
+content %}
+<p style="font-family:verdana">We have tried several algorithms to calibrate the E+ model. The following table is a simple comparison between results of Gradient Descend(GD), Block Gradient Descend(BGD)
+    and Cyclic Block Gradient Descend(CBGD). You can check the details of a algorithm by selecting it.<p>
+<div align="center"><img src="/static/result_comparison.png" width=1000></div>
+<p>*Latin Hybercube Sampling(LHS) is a statistical method for generating a near-random sample of parameter values from a multidimensional distribution</p>
+
+{#<h3 align="center">Optimizing Setting</h3>#}
+<div class="form group">
+    <label for="alg"><b>Algorithm</b></label>
+    <select id="alg" name="alg">
+        <option value="GD">Gradient Descend</option>
+        <option value="BGD1">Block Gradient Descend</option>
+        <option value="BGD2">Cyclic Block Gradient Descend</option>
+        <option value="BC">Bayesian Calibration</option>
+        <option value="BFGS">Quasi Newton Method:BFGS</option>
+        <option value="SQP">Sequential Quadratic Programming</option>
+    </select>
+    <button class="btn btn-primary" onclick="cond()">Confirm</button>
+</div>
+{#<div id="b">#}
+{#    <p></p>#}
+{#    <b>Parameter Update methods:</b>(gradient update is the default way)#}
+{#    <br/>#}
+{#    <input type="radio" name="update" value="Adam"/>Adam#}
+{#    <br/>#}
+{#    <input type="radio" name="update" value="Momentum" />Momentum#}
+{#    <p></p>#}
+{#</div>#}
+<p></p>
+<div id="subtitle"></div>
+<div id="description"></div>
+<div align="center" id="table"></div>
+<div id = "plot"></div>
+<script>
+     function cond() {
+         if (document.getElementById("alg").value == "GD") {
+             document.getElementById("subtitle").innerHTML = "<h5>Gradient Descend(GD)<h5> "
+             document.getElementById("description").innerHTML = "<p style=\"font-family:verdana\">Because of the E+ simulation mechanism can not be expressed with a closed mathematic form, our loss function " +
+                 "has no closed mathematic expression. Thus, the gradient can only be estimated rather than computed. We applied 1st oder difference to estimate the gradient.</p>" +
+                 "<p style=\"font-family:verdana\">In this case, we will have to run a individual simulation for each parameter to estimate its gradient and for the line search (a technique for determining the" +
+                 " proper step size.) This can be very time costly. To accelerate it, we apply multithreads-programming. Each thread will take care of the gradient estimation and line search " +
+                 "for one parameter in a parallel way rather than the old sequential way, which makes the algorithm around 15 times faster. This is implemented for all gradient-based algorithms.</p>"+
+                 "<p style=\"font-family:verdana\">In the following plots, you can observe the increase of loss in the cases of LHS3 and LHS4. This is because the line search fail to find the proper step size " +
+                 "that guarantee the monotonic decrease of the loss. Theoretically, line search guarantee to find such a step size when the update of parameters is based on the gradient itself." +
+                 " But in practice, our gradient estimation is not perfect. The main obstacle to estimate the gradient better is that although the narrower the 1st order difference the better the gradient estimation, " +
+                 "the E+ model output may not change at all when we make the 1st difference too narrow because the calibration parameters are not sensitive enough. In general, such increase of loss just means the " +
+                 "algorithm gets stuck.</p>" +
+                 "<p style=\"font-family:verdana\">Besides, we also have tried other variant algorithm like \"gradient + momentum\" and \"Adam\" but they didn't bring us obvious improvement.</p>"
+             document.getElementById("table").innerHTML = "<img src='/static/GD/GD_result.png' width='700'>";
+             document.getElementById("plot").innerHTML = "<img src='/static/GD/GD_lg_LHS1.png' width='350'><img src='/static/GD/GD_lg_LHS2.png' width='350'><img src='/static/GD/GD_lg_LHS3.png' width='350'>" +
+                 "<img src='/static/GD/GD_lg_LHS4.png' width='350'><img src='/static/GD/GD_lg_LHS5.png' width='350'>";
+         }
+         else if (document.getElementById("alg").value == "BGD1") {
+             document.getElementById("subtitle").innerHTML = "<h5>Block Gradient Descend(BGD)<h5> "
+             document.getElementById("description").innerHTML = "<p style=\"font-family:verdana\">Because there are some parameters used only in summer or winter, estimating the gradients of such parameters with" +
+             " the entire yearlong simulation output can be misleading. Thus, we divide the parameters into three blocks: global parameters(used through out the year), summer parameters(used in summer only) and winter parameters(" +
+                 "used in winter only). And correspondingly, we get three loss functions: global MSE, summer MSE, winter MSE. During the optimization, we update the blocks of parameters sequentially with the gradient of its corresponding" +
+                 " loss function until the algorithm converge for all three losses. The update order is global parameters -> summer parameters -> winter parameters -> global parameters -> ... so on so forth.</p>" +
+                 "<p style=\"font-family:verdana\">We can see in LHS3 where GD get stuck, BGD is able to search and find a better solution. However, there is still case where BGD get stuck(LHS4). And BGD generally takes more time to " +
+                 "converge compared to GD(like LHS1 and LHS5). Besides, in LHS3, we observed competing cases, i.e. the optimization of one loss (like lg here) hurt the another loss (like lw here). We are going to add constraints on " +
+                 "the optimization to avoid such competing case. We plan to apply Sequential Quadratic Programming(SQP) to search for the solution.</p>"
+             document.getElementById("table").innerHTML = "<img src='/static/BGD1/BGD1_result.png' width='700'>";
+             document.getElementById("plot").innerHTML = "<img src='/static/BGD1/BGD1_global_LHS1.png', width='350'><img src='/static/BGD1/BGD1_summer_LHS1.png', width='350'><img src='/static/BGD1/BGD1_winter_LHS1.png', width='350'>" +
+             "<img src='/static/BGD1/BGD1_global_LHS2.png', width='350'><img src='/static/BGD1/BGD1_summer_LHS2.png', width='350'><img src='/static/BGD1/BGD1_winter_LHS2.png', width='350'>" +
+             "<img src='/static/BGD1/BGD1_global_LHS3.png', width='350'><img src='/static/BGD1/BGD1_summer_LHS3.png', width='350'><img src='/static/BGD1/BGD1_winter_LHS3.png', width='350'>" +
+             "<img src='/static/BGD1/BGD1_global_LHS4.png', width='350'><img src='/static/BGD1/BGD1_summer_LHS4.png', width='350'><img src='/static/BGD1/BGD1_winter_LHS4.png', width='350'>" +
+             "<img src='/static/BGD1/BGD1_global_LHS5.png', width='350'><img src='/static/BGD1/BGD1_summer_LHS5.png', width='350'><img src='/static/BGD1/BGD1_winter_LHS5.png', width='350'>";
+         }
+         else if (document.getElementById("alg").value == "BGD2") {
+             document.getElementById("subtitle").innerHTML = "<h5>Cyclic Block Gradient Descend(CBGD)<h5> "
+             document.getElementById("description").innerHTML = "<p style=\"font-family:verdana\">In CBGD, we divide the blocks of parameters and define the losses just the same as what we did in Block gradient descend(BGD)." +
+                 "The difference is that not like BGD just <strong>update</strong> each block of parameters, CBGD <strong>optimize</strong> each block of parameters until the loss functions " +
+                 "converge to a stationary point for all blocks. The red lines in the plots indicate the algorithm finished the optimization of a block and started the optimization of the " +
+                 "next block. The order of blocks are the same with that of BGD </p>" +
+                 "<p style=\"font-family:verdana\">We can see CBGD can not only optimize cases where GD and BGD both get stuck (like LHS4), it is also much efficient than BGD and just slightly slower than GD. " +
+                 "And like what we have seen in BGD, we still observe there is competing case in LHS3. We are going to add constraints on the optimization to avoid such competing case and apply Sequential Quadratic Programming(SQP) " +
+                 "to search for the solution.</p>"
+             document.getElementById("table").innerHTML = "<img src='/static/BGD2/BGD2_result.png' width='700'>";
+             document.getElementById("plot").innerHTML = "<img src='/static/BGD2/BGD_lg_LHS1.png', width='350'>" +
+                 "<img src='/static/BGD2/BGD_ls_LHS1.png', width='350'><img src='/static/BGD2/BGD_lw_LHS1.png', width='350'>" +
+             "<img src='/static/BGD2/BGD_lg_LHS2.png', width='350'><img src='/static/BGD2/BGD_ls_LHS2.png', width='350'><img src='/static/BGD2/BGD_lw_LHS2.png', width='350'>" +
+             "<img src='/static/BGD2/BGD_lg_LHS3.png', width='350'><img src='/static/BGD2/BGD_ls_LHS3.png', width='350'><img src='/static/BGD2/BGD_lw_LHS3.png', width='350'>" +
+             "<img src='/static/BGD2/BGD_lg_LHS4.png', width='350'><img src='/static/BGD2/BGD_ls_LHS4.png', width='350'><img src='/static/BGD2/BGD_lw_LHS4.png', width='350'>" +
+             "<img src='/static/BGD2/BGD_lg_LHS5.png', width='350'><img src='/static/BGD2/BGD_ls_LHS5.png', width='350'><img src='/static/BGD2/BGD_lw_LHS5.png', width='350'>";
+         }
+         else if (document.getElementById("alg").value == "BFGS") {
+             document.getElementById("subtitle").innerHTML = "<h5>Quasi Newton Method: BFGS<h5> ";
+             document.getElementById("description").innerHTML = "<p style=\"font-family:verdana\">Newton method use Hessian matrix to update the parameter. Here, the biggest obstacle is the unaffordable computation cost of " +
+                 "the Hessian matrix. Thus, we applied BFGS(short for the names of its creators) to iteratively estimate the Hessian by the gradient. In theory, it shall perform better than GD when the estimation of gradients" +
+                 " are accurate. </p>";
+             document.getElementById("table").innerHTML = "";
+             document.getElementById("plot").innerHTML = "<strong>To be continued ... </strong>";
+         }
+         else if (document.getElementById("alg").value == "BC") {
+             document.getElementById("subtitle").innerHTML = "<h5>Bayesian Calibration(BC)<h5> ";
+             document.getElementById("description").innerHTML = "<p style=\"font-family:verdana\"> Bayesian Calibration is the most popular method in BEM calibration." +
+                 "It first models the objective function with a Gaussian Process(GP) and then estimates the calibration parameters by approaching their posterior distributions. Monte Calo Markov Chain(MCMC) is the most common way to" +
+                 " get these distributions but it can be extremely time costly and suffers the \"curse of dimension\(the converging time increases exponentially as number of parameters increases).\" Even though we applied NUTS " +
+                 "(a accelerated variant of MCMC), it still costs around 8.5 days to converge to a stationary distribution</p>";
+             document.getElementById("table").innerHTML = "<img src='/static/BC/BC_result.png', width='1200'>";
+             document.getElementById("plot").innerHTML = "<div align='center'><img src='/static/BC/weekly(169)_gaussianprior(10000).png', width='800'><div>";
+         }
+         else if (document.getElementById("alg").value == "SQP") {
+             document.getElementById("subtitle").innerHTML = "<h5>Sequential Quadratic Programming(SQP)<h5> ";
+             document.getElementById("description").innerHTML = "<p style=\"font-family:verdana\">SQP is for solving complicated non-linear constrained optimization." +
+                 " At each step, it constructs a subproblem with the quadratic Taylor series approximation of the objective function (or its Lagrangian function) and the constraints. This is because the quadratic problem has " +
+                 "a analytic solution (i.e. very easy to solve). We need SQP when we add non-competing constraints on the optimizations. SQP requires the Hessian matrix, and here we use BFGS to estimate it. </p>";
+             document.getElementById("table").innerHTML = "";
+             document.getElementById("plot").innerHTML = "<strong>To be continued ... </strong>";
+         }
+     }
+</script>
+{% endblock %}

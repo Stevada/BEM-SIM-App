@@ -1,0 +1,32 @@
+ ReadVarsESO
+ processing:C:\Users\Xu Ziang\Documents\Developer\Flask-Web-App-Tutorial\BEM_files\my_simulation\opyplus.rvi
+ input file:eplusout.eso
+ output file:eplusout.csv
+ getting all vars from:eplusout.eso
+  number variables requested for output=          80
+ ReadVars Run Time=00hr 00min  6.50sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:C:\Users\Xu Ziang\Documents\Developer\Flask-Web-App-Tutorial\BEM_files\my_simulation\opyplus.mvi
+ input file:eplusout.mtr
+ output file:eplusmtr.csv
+ getting all vars from:eplusout.mtr
+  number variables requested for output=          29
+ ReadVars Run Time=00hr 00min  2.52sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:C:\Users\Xu Ziang\Documents\Developer\Flask-Web-App-Tutorial\BEM_files\my_simulation\opyplus.rvi
+ input file:eplusout.eso
+ output file:eplusout.csv
+ getting all vars from:eplusout.eso
+  number variables requested for output=          80
+ ReadVars Run Time=00hr 00min  6.58sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:C:\Users\Xu Ziang\Documents\Developer\Flask-Web-App-Tutorial\BEM_files\my_simulation\opyplus.mvi
+ input file:eplusout.mtr
+ output file:eplusmtr.csv
+ getting all vars from:eplusout.mtr
+  number variables requested for output=          29
+ ReadVars Run Time=00hr 00min  2.69sec
+ ReadVarsESO program completed successfully.
