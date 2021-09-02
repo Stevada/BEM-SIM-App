@@ -1,6 +1,13 @@
 # BEM(building energy model)-SIM-APP
 
-<img src="images/homepage.png" width="850">
+The is web app is for presenting my research in BEM(building energy model) calibration
+<img src="images/homepage.png" width="1000">
+
+You can play around with the simulator we used by manipulate some parameters we calibrated
+<img src="images/simulationpate.png" width="1000">
+
+And check the algorithms that we have tried. There is explaination of the idea behind each algorithm and its pros and cons
+<img src="images/optimization.png" width="1000">
 
 ## 1. Setup & Installation with Docker(recommended)
 Everything that this app needed has been dockerized with it
