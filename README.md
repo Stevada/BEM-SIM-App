@@ -19,7 +19,7 @@ sudo docker build -t [Your Preferred Image Name] .
 ```
 
 ### Run the image with port mapping
-We need port mapping to map the docker container port to our local host port（any unoccupied port is fine, like 8080）, otherwise we won't be able to access the app. Here, the container port is 5000
+We need to map the docker container port to our local host port（any unoccupied port is fine, like 8080）, otherwise we won't be able to access the app. Here, the container port is 5000
 
 ```bash
 sudo docker run -p [Your host port]:5000 [Your Preferred Image Name]
