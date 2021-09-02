@@ -1,16 +1,16 @@
 # BEM(building energy model)-SIM-APP
 
-The is web app is for presenting my research in BEM(building energy model) calibration
+The is a web app presenting my research in BEM(building energy model) calibration.
 <img src="images/homepage.png" width="1200">
 
-You can play around with the simulator we used by manipulate some parameters we calibrated
+You run your own BEM simulation by playing around with some parameters we used in the research.
 <img src="images/simulation_page.png" width="1200">
 
-And check the algorithms that we have tried. There is explaination of the idea behind each algorithm and its pros and cons
+And check the algorithms that we have tried. There are detailed explainations of the idea behind each algorithm and its pros and cons.
 <img src="images/optimization_page.png" width="1200">
 
 ## 1. Setup & Installation with Docker(recommended)
-Everything that this app needed has been dockerized with it
+Everything that this app needed has been dockerized with it.
 
 ### Build a docker image
 
@@ -19,7 +19,7 @@ sudo docker build -t [Your Preferred Image Name] .
 ```
 
 ### Run the image with port mapping
-We need to map the docker container port to our local host port（any unoccupied port is fine, like 8080）, otherwise we won't be able to access the app. Here, the container port is 5000
+We need to map the docker container port to our local host port（any unoccupied port is fine, like 8080）, otherwise we won't be able to access the app. Here, the container port is 5000.
 
 ```bash
 sudo docker run -p [Your host port]:5000 [Your Preferred Image Name]
@@ -30,7 +30,7 @@ Go to `https://0.0.0.0:[Your host port]`
 
 ## 2. Setup & Installtion with python
 
-Make sure you have installed EnergyPlusV9.3.0 and Python 3.7 (other version of Python won't work)
+Make sure you have installed EnergyPlusV9.3.0 and Python 3.7 (other version of Python won't work).
 
 ```bash
 git clone <repo-url>
