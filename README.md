@@ -3,7 +3,7 @@
 The is a web app presenting my research in BEM(building energy model) calibration.
 <img src="images/homepage.png" width="1200">
 
-You can run your own BEM simulation by playing around with some parameters we used in the research.
+You can run your own BEM simulation by playing around with some parameters we used in the research,
 <img src="images/simulation_page.png" width="1200">
 
 and check the algorithms that we have tried. There are detailed explainations of the idea behind each algorithm and its pros and cons.
