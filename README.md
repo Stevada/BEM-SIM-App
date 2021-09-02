@@ -1,6 +1,6 @@
 # BEM(building energy model)-SIM-APP
 
-<img src="images/homepage.png" width="100">
+<img src="images/homepage.png" width="500">
 
 ## 1. Setup & Installation with Docker(recommended)
 Everything that this app needed has been dockerized with it
