@@ -6,7 +6,7 @@ The is a web app presenting my research in BEM(building energy model) calibratio
 You can play around with some parameters we used in the research and run your own BEM simulation.
 <img src="images/simulation_page.png" width="1200">
 
-And you check the algorithms that we have tried. There are detailed explainations of the ideas behind each algorithms and their pros and cons.
+And you check the algorithms that we have tried. There are detailed explainations of the ideas behind them and their pros and cons.
 <img src="images/optimization_page.png" width="1200">
 
 ## 1. Setup & Installation with Docker(recommended)
